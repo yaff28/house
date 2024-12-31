@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumah Dijual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        nav {
+            background: #1a237e;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .main-content {
+            padding-top: 70px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 40px;
+        }
+
+        /* Gallery Layout */
+        .gallery-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 20px;
+        }
+
+        .main-image-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+
+        .main-image {
+            width: 100%;
+            padding-top: 177.78%; /* 9:16 aspect ratio */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .thumbnails {
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            gap: 10px;
+            height: 100%;
+        }
+
+        .thumbnail {
+            position: relative;
+            padding-top: 177.78%; /* 9:16 aspect ratio */
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .thumbnail:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .thumbnail.active {
+            border: 3px solid #1a237e;
+        }
+
+        .property-details {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: #1a237e;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+            padding: 1.5rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+        }
+
+        .description {
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 2rem;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .thumbnails {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: none;
+                height: auto;
+            }
+
+            .main-image {
+                padding-top: 133.33%; /* Slightly shorter for mobile */
+            }
+
+            .thumbnail {
+                padding-top: 100%; /* Square thumbnails on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Rumah Subsidi Dijual</div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="gallery-container">
+            <div class="gallery">
+                <div class="main-image-container">
+                    <div id="mainImage" class="main-image"></div>
+                </div>
+                <div class="thumbnails" id="thumbnails">
+                    <!-- Thumbnails will be added here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <div class="property-details">
+            <div class="price">Rp 190.000.000</div>
+            <h1>RUMAH SUBSIDI IMPIAN FULL RENOVASI SIAP HUNI</h1>
+            
+            <div class="features">
+                <div class="feature">
+                    <span>🛏 2 Kamar Tidur</span>
+                </div>
+                <div class="feature">
+                    <span>🚿 2 Kamar Mandi</span>
+                </div>
+                <div class="feature">
+                    <span>🚗 Garasi 1 Mobil</span>
+                </div>
+                <div class="feature">
+                    <span>📏 69 m²</span>
+                </div>
+            </div>
+
+            <div class="description">
+                <h2>Deskripsi Rumah</h2>
+                <p>Alamat:Perumahan New Green Park Blok E NO.16.Kel.Rajeg Mulya Kec.Rajeg Kabupaten Tangerang</p>
+                <br>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>1 Closet Duduk 1 Closet Jongkok</li>
+                    <li>1 Ruang Makan</li>
+                    <li>Carpot Full Keramik full kanopi dan Pagar</li>
+                    <li>Listrik Token 1300 </li>
+                    <li>Air Satelit</li>
+                    <li>Sistim Cluster</li>
+                    <li>Dalam Cluster ada Mushalla</li>
+                    <li>Lokasi strategis dekat dengan:
+                  
+                        <ul style="margin-left: 20px; margin-top: 5px;">
+                            <li>Dekat ke Fasilitas umum, sekolah SD SMP SMA</li>
+                            <li>Dekat Ke Bandara Soeta</li>
+                            <li>Ada bis Tayo M1 CADAS BANDARA</li>
+                            <li>Dekat Ke RS Hermina Periuk, Sari Asih Sangiang</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <a href="https://wa.me/6285782218496?text=saya%20tertarik%20dengan%20rumah%20ini" class="whatsapp-btn">
+                Hubungi via WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // CARA MENAMBAH/MENGUBAH GAMBAR:
+        // Ganti link-link gambar di bawah ini dengan link gambar Anda
+        const images = [
+            'https://yaff28.wordpress.com/wp-content/uploads/2024/12/img-20241231-wa0035-1.jpg?w=768', // Ganti dengan link gambar 1
+            'https://yaff28.wordpress.com/wp-content/uploads/2024/12/img-20241231-wa0036.jpg?w=768', // Ganti dengan link gambar 2
+            'https://yaff28.wordpress.com/wp-content/uploads/2024/12/img-20241231-wa0037.jpg?w=768', // Ganti dengan link gambar 3
+            'https://yaff28.wordpress.com/wp-content/uploads/2024/12/dapur.jpg?w=768'  // Ganti dengan link gambar 4
+        ];
+
+        // Generate thumbnails
+        const thumbnailsContainer = document.getElementById('thumbnails');
+        images.forEach((image, index) => {
+            const thumbnail = document.createElement('div');
+            thumbnail.className = `thumbnail ${index === 0 ? 'active' : ''}`;
+            thumbnail.style.backgroundImage = `url(${image})`;
+            thumbnail.onclick = () => changeImage(index);
+            thumbnailsContainer.appendChild(thumbnail);
+        });
+
+        // Set initial main image
+        document.getElementById('mainImage').style.backgroundImage = `url(${images[0]})`;
+
+        function changeImage(index) {
+            // Update main image
+            document.getElementById('mainImage').style.backgroundImage = `url(${images[index]})`;
+            
+            // Update thumbnail active state
+            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
